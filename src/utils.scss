@@ -1,0 +1,29 @@
+@mixin center($larg: 1440, $padding: 20){
+    $w: $larg * 1px;
+    $p: $padding * 1px;
+    width: 100vw;
+    overflow-x: hidden;
+    padding-left: calc(( 100% - $w) / 2);
+    padding-right: calc(( 100% - $w) / 2);
+
+    //less than $larg pixels
+    @media all and (max-width: calc($w + ($p * 2))) {
+        padding-left: $p;
+        padding-right: $p;
+    }
+    //mobil
+    @media all and (max-width: 480px) {
+        padding-left: calc($p / 2);
+        padding-right: calc($p / 2);
+    }
+}
+
+@mixin flex($justify: center, $items: center){
+    display: flex;
+    justify-content: $justify;
+    align-items: $items;
+}
+
+@function size($size: 16) {
+    @return calc((#{$size} / var(--default-font-size)) * 1rem);
+}
